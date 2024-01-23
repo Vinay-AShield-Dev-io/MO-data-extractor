@@ -6,7 +6,6 @@ interface IEnv {
     clusterName: string;
     mongoURL: string;
     mongoDB_DBName: string;
-    
 }
 
 interface IEnvHashType {
@@ -84,7 +83,7 @@ const supportedEnvs: IEnvHashType = {
         slackReportBot: stagingSlackReportBot,
         clusterName: "Test-dev",
         mongoURL: MONGO_URL,
-        mongoDB_DBName: 'clickless-stats-dev'
+        mongoDB_DBName: 'AShieldClickless'
 
     },
     "staging": {
@@ -94,7 +93,7 @@ const supportedEnvs: IEnvHashType = {
         slackReportBot: stagingSlackReportBot,
         clusterName: "Test-staging",
         mongoURL: MONGO_URL,
-        mongoDB_DBName:'clickless-stats-stag'
+        mongoDB_DBName: 'AShieldClickless'
     },
     "prod": {
         port: 3003,
@@ -103,13 +102,17 @@ const supportedEnvs: IEnvHashType = {
         slackReportBot: prodSlackReportBot,
         clusterName: HOST_CLUSTER_NAME,
         mongoURL: MONGO_URL,
-        mongoDB_DBName:'clickless-stats'
+        mongoDB_DBName: 'AShieldClickless'
     }
 }
 const ASHIELD_ENCRYPT_DECRYPT_URL = process.env.ASHIELD_ENCRYPT_DECRYPT_URL ? process.env.ASHIELD_ENCRYPT_DECRYPT_URL : "http://localhost:8081"
 const LOG_PATH = process.env.LOG_PATH ? process.env.LOG_PATH : "/datassd/prodlogs/auth/cdrs/"
 const COMPUTE_MACHINES_IP_LIST = process.env.COMPUTE_MACHINES_IP_LIST ? process.env.COMPUTE_MACHINES_IP_LIST : "[\"192.168.2.14\", \"192.168.2.15\", \"192.168.2.16\"]"
-
 const setEnv = typeof (process.env.NODE_ENV) == "string" ? process.env.NODE_ENV.toLowerCase() : "";
 const ENV_VALS = typeof (supportedEnvs[setEnv]) == "object" ? supportedEnvs[setEnv] : supportedEnvs['dev'];
-export { ASHIELD_ENCRYPT_DECRYPT_URL, COMPUTE_MACHINES_IP_LIST, ENV_VALS, LOG_PATH };
+const AZURE_CONNECTION_STRING = process.env.AZURE_CONNECTION_STRING ? process.env.AZURE_CONNECTION_STRING : "";
+const SENDER_ADDRESS = "donotreply@bb59c0cb-0df5-47e4-b90f-00b671521401.azurecomm.net"
+
+
+export { ASHIELD_ENCRYPT_DECRYPT_URL, AZURE_CONNECTION_STRING, COMPUTE_MACHINES_IP_LIST, ENV_VALS, LOG_PATH, SENDER_ADDRESS };
+
