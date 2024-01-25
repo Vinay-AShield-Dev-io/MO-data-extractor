@@ -18,13 +18,11 @@ const longCodesInfo = [{ "name": "Gupshup airtel", "code": 1644033266 },
 { "name": "Gupshup vodafoneidea", "code": 463069304 },
 { "name": "Routemobile VodafoneIdea", "code": 2027425935 },
 ]
-
 const getLongCodeDataSummary = async (ashieldmobtxnCollection: Collection, smshlc: number): Promise<[string, number, number, number]> => {
     let dataCollector = ""
     let completed: number = 0
     let expired: number = 0
     let failed: number = 0
-
     await ashieldmobtxnCollection.aggregate([
         {
             "$match": { "smshlc": smshlc, "createdAt": { $gt: startDate, $lt: endDate } }
