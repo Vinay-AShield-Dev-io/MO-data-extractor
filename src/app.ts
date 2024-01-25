@@ -19,7 +19,6 @@ const longCodesInfo = [{ "name": "Gupshup airtel", "code": 1644033266 },
 { "name": "Routemobile VodafoneIdea", "code": 2027425935 },
 ]
 
-
 getDB().then(async (resp) => {
     if (resp === null) return;
     const [db, client] = resp;
