@@ -23,7 +23,7 @@ export const getLongCodeDataSummary = async (ashieldmobtxnCollection: Collection
             }
             else if (data?._id === "initiated") {
                 failed += parseInt(data?.sum);
-                dataCollector += "Initiated" + " = " + data?.sum + "<br>"
+                dataCollector += "Failed" + " = " + data?.sum + "<br>"
             }
         })
     });
