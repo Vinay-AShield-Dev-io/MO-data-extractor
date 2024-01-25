@@ -12,8 +12,7 @@ interface IEnvHashType {
     [key: string]: IEnv
 }
 
-
-// azure emai service configurations
+// ---------------------- azure emai service configurations --------------------------
 const stagingToEmails = [
     {
         address: "vinay.kumara@ashield.co",
@@ -23,42 +22,14 @@ const stagingToEmails = [
 
 const prodToEmails = [
     {
-        address: "vinay.kumara@ashield.co",
-        displayName: "Vinay",
+        address: "analytics@ashield.co",
+        displayName: "AShield Analytics",
     },
-    {
-        address: "subhodip.datta@ashield.co",
-        displayName: "Subhodip",
-    },
-
-    {
-        address: "siddarth.bellur@ashield.co",
-        displayName: "Siddarth",
-    },
-
-    {
-        address: "prashanta.n@ashield.co",
-        displayName: "Prashant",
-    },
-    {
-        address: "yashraaj@ashield.co",
-        displayName: "Yashraaj",
-    },
-    {
-        address: "a.admin@ashield.co",
-        displayName: "AShield admin"
-    },
-    {
-        address: "ajay@ashield.co",
-        displayName: "Ajay",
-    },
-    {
-        address: "nithya.m@ashield.co",
-        displayName: "Nithya",
-    }
 ]
+// ---------------------- azure emai service configurations ends --------------------------
 
-// Slack configurations
+
+// ---------------------- Slack configurations --------------------------
 const SLACK_ALERT_URL = process.env.SLACK_ALERT_URL ? process.env.SLACK_ALERT_URL : 'https://hooks.slack.com/services/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'; // bajajFinAlert
 const SLACK_HOURLY_REPORT_URL = process.env.SLACK_HOURLY_REPORT_URL ? process.env.SLACK_HOURLY_REPORT_URL : 'https://hooks.slack.com/services/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'; // bajajHourlyReport
 const SLACK_TEST_URL = 'https://hooks.slack.com/services/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'
@@ -70,7 +41,7 @@ const stagingSlackReportBot = {
     SLACK_ALERT_URL: SLACK_TEST_URL,
     SLACK_HOURLY_REPORT_URL: SLACK_TEST_URL
 }
-
+// ---------------------- Slack configuration ends --------------------------
 
 const HOST_CLUSTER_NAME = typeof (process.env.HOST_CLUSTER_NAME) == "string" ? process.env.HOST_CLUSTER_NAME : "Bajaj"
 const MONGO_URL = typeof (process.env.MONGO_URL) === "string" ? process.env.MONGO_URL : "mongodb://ashieldUser:ASh1e19U_21@localhost:27017"
@@ -105,14 +76,11 @@ const supportedEnvs: IEnvHashType = {
         mongoDB_DBName: 'AShieldClickless'
     }
 }
-const ASHIELD_ENCRYPT_DECRYPT_URL = process.env.ASHIELD_ENCRYPT_DECRYPT_URL ? process.env.ASHIELD_ENCRYPT_DECRYPT_URL : "http://localhost:8081"
-const LOG_PATH = process.env.LOG_PATH ? process.env.LOG_PATH : "/datassd/prodlogs/auth/cdrs/"
-const COMPUTE_MACHINES_IP_LIST = process.env.COMPUTE_MACHINES_IP_LIST ? process.env.COMPUTE_MACHINES_IP_LIST : "[\"192.168.2.14\", \"192.168.2.15\", \"192.168.2.16\"]"
 const setEnv = typeof (process.env.NODE_ENV) == "string" ? process.env.NODE_ENV.toLowerCase() : "";
 const ENV_VALS = typeof (supportedEnvs[setEnv]) == "object" ? supportedEnvs[setEnv] : supportedEnvs['dev'];
 const AZURE_CONNECTION_STRING = process.env.AZURE_CONNECTION_STRING ? process.env.AZURE_CONNECTION_STRING : "";
 const SENDER_ADDRESS = "donotreply@bb59c0cb-0df5-47e4-b90f-00b671521401.azurecomm.net"
 
 
-export { ASHIELD_ENCRYPT_DECRYPT_URL, AZURE_CONNECTION_STRING, COMPUTE_MACHINES_IP_LIST, ENV_VALS, LOG_PATH, SENDER_ADDRESS };
+export { AZURE_CONNECTION_STRING, ENV_VALS, SENDER_ADDRESS };
 
