@@ -22,38 +22,8 @@ const stagingToEmails = [
 
 const prodToEmails = [
     {
-        address: "srinivasan.gsvasan@ashield.co",
-        displayName: "Srinivasan",
-    },
-    {
-        address: "yashraaj@ashield.co",
-        displayName: "Yashraaj",
-    },
-    {
-        address: "vinay.kumara@ashield.co",
-        displayName: "Vinay",
-    },
-    {
-        address: "subhodip.datta@ashield.co",
-        displayName: "Subhodip",
-    },
-
-    {
-        address: "siddarth.bellur@ashield.co",
-        displayName: "Siddarth",
-    },
-
-    {
-        address: "prashanta.n@ashield.co",
-        displayName: "Prashant",
-    },
-    {
-        address: "a.admin@ashield.co",
-        displayName: "AShield admin"
-    },
-    {
-        address: "nithya.m@ashield.co",
-        displayName: "Nithya",
+        address: "analytics@ashield.co",
+        displayName: "AShield Analytics",
     },
 ]
 // ---------------------- azure emai service configurations ends --------------------------
