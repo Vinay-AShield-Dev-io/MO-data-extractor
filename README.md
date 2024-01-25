@@ -5,4 +5,5 @@
 <p>Recent changes made in Repository are: <p>
 <ol>
     <li>Hoisted all constants to the config file.</li>
+    <li>Added more insights like "totoal failed percent", "total expired percentage".</li>
 </ol>
