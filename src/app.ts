@@ -19,8 +19,12 @@ const longCodesInfo = [{ "name": "Gupshup airtel", "code": 1644033266 },
 { "name": "Routemobile VodafoneIdea", "code": 2027425935 },
 ]
 
-const getLongCodeDataSummary = async (ashieldmobtxnCollection: Collection, smshlc: number) => {
+const getLongCodeDataSummary = async (ashieldmobtxnCollection: Collection, smshlc: number): Promise<[string, number, number, number]> => {
     let dataCollector = ""
+    let completed: number = 0
+    let expired: number = 0
+    let failed: number = 0
+
     await ashieldmobtxnCollection.aggregate([
         {
             "$match": { "smshlc": smshlc, "createdAt": { $gt: startDate, $lt: endDate } }
@@ -28,10 +32,21 @@ const getLongCodeDataSummary = async (ashieldmobtxnCollection: Collection, smshl
         { $group: { _id: "$status", sum: { $count: {} } } }
     ]).toArray().then(async data => {
         data.forEach(data => {
-            dataCollector += data?._id + " = " + data?.sum + "<br>"
+            if (data?._id === "expired") {
+                expired += parseInt(data?.sum);
+                dataCollector += "Expired" + " = " + data?.sum + "<br>"
+            }
+            else if (data?._id === "completed") {
+                completed += parseInt(data?.sum);
+                dataCollector += "Completed" + " = " + data?.sum + "<br>"
+            }
+            else if (data?._id === "initiated") {
+                failed += parseInt(data?.sum);
+                dataCollector += "Initiated" + " = " + data?.sum + "<br>"
+            }
         })
     });
-    return dataCollector;
+    return [dataCollector, completed, expired, failed];
 }
 
 
@@ -44,11 +59,16 @@ getDB().then(async (resp) => {
     let finalFormattedOUtput = ""
     for (const item of longCodesInfo) {
         finalFormattedOUtput += `<h4> ${item.name} (${item.code}) </h4>`;
-        finalFormattedOUtput += await getLongCodeDataSummary(ashieldmobtxnCollection, item.code) + "<br>";
+        const [FFO, completed = 0, expired = 0, failed = 0] = await getLongCodeDataSummary(ashieldmobtxnCollection, item.code);
+        finalFormattedOUtput += FFO;
+        const totalRequests: number = completed + failed + expired;
+        finalFormattedOUtput += "Total requests = " + totalRequests + "<br>";
+        finalFormattedOUtput += "Expired rate in % = " + ((expired / totalRequests) * 100).toFixed(2) + "<br>";
+        finalFormattedOUtput += "Failed rate in % = " + ((failed / totalRequests) * 100).toFixed(2) + "<br>";
     };
     await client.close();
     console.log("Time taken to execute mongo queries:", (performance.now() - startTime).toFixed(2), "ms");
-    await sendMail(finalFormattedOUtput)
+    await sendMail(finalFormattedOUtput);
     console.log("Program execution completed:", (performance.now() - startTime).toFixed(2), "ms");
 }).catch(err => {
     console.log(err);
