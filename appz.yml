@@ -24,4 +24,4 @@ properties:
     MONGO_URL:
           vault: MONGO_URL
     NODE_ENV: "dev"
-    revision: 01
+    revision: 02
