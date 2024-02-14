@@ -6,7 +6,6 @@ app:
 build:
     version: 20.11
     env: PROD3
-    repo: https://github.com/AShield2-0/monorepo
     build_file: none
     output_files: output/*.zip
     image_template: node-20.11
