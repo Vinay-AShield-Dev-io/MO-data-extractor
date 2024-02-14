@@ -1,0 +1,27 @@
+app:
+    name: MO-data-extractor
+    code: MO-data-extractor
+    notify: ashield-alerts@ecloudcontrol.com
+
+build:
+    version: 20.11
+    env: PROD3
+    repo: https://github.com/AShield2-0/monorepo
+    build_file: none
+    args:
+    output_files: output/*.zip
+    image_template: node-20.11
+    
+deploy:
+    context: bajaj/PROD3
+    replicas: 1
+    port:
+    - 8000
+
+properties:
+    AZURE_CONNECTION_STRING:
+          vault: AZURE_CONNECTION_STRING
+    MONGO_URL:
+          vault: MONGO_URL
+    NODE_ENV: "dev"
+    revision: 01
