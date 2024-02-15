@@ -9,7 +9,6 @@ export const getDB = async (): Promise<[Db, MongoClient] | null> => {
     try {
         client.connect();
         const db = client.db(dbName);
-        const endTime = performance.now();
         return [db, client]
     } catch (e) {
         console.error(e);
