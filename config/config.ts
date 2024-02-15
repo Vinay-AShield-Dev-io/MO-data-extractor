@@ -13,6 +13,7 @@ interface IEnvHashType {
 }
 
 // ---------------------- azure emai service configurations --------------------------
+
 // this is a staging email to test the application
 const stagingToEmails = [
     {
