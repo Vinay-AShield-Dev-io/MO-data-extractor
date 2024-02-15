@@ -27,8 +27,8 @@ Follow these steps to install the FIDO Application:
 
 Edit the `utils/const.ts` file to set up the Application
 Before running the script, set the below environment variables
-`AZURE_CONNECTION_STRING=<Azure Email Communication Service Token>
-MONGO_URL=<Bajaj Prod MonGOURI>
+`AZURE_CONNECTION_STRING=<Azure Email Communication Service Token> <br>
+MONGO_URL=<Bajaj Prod MonGOURI> <br>
 NODE_ENV= <"dev" | "prod" | "staing">`
 
 ## 4. Usage
@@ -40,8 +40,7 @@ This script takes 2 command line inputs. this application is designed to run and
 2. `from ISO Datetime`: the second command line input is the ISO datetime: end datetime
 
 
-
-<p>Recent changes made in Repository are: <p>
+## 5. Recent changes made in Repository are: 
 <ol>
     <li>Hoisted all constants to the `config file`.</li>
     <li>Added more insights like "totoal failed percent", "total expired percentage".</li>
