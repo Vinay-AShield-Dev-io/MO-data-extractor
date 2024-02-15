@@ -26,7 +26,7 @@ Follow these steps to install the FIDO Application:
 ## 3. Configuration
 
 Edit the `utils/const.ts` file to set up the Application
-Before running the script, set the below environment variables
+Before running the script, set the below environment variables <br>
 `AZURE_CONNECTION_STRING=<Azure Email Communication Service Token>` <br>
 `MONGO_URL=<Bajaj Prod MonGOURI>` <br>
 `NODE_ENV= <"dev" | "prod" | "staing">` <br>
