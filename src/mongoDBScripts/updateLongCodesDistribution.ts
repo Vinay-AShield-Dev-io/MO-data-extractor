@@ -1,3 +1,4 @@
+
 import { Collection } from 'mongodb';
 
 export const getLongCodeDataSummary = async (ashieldmobtxnCollection: Collection, smshlc: number, startDate: Date, endDate: Date): Promise<[string, number, number, number]> => {

@@ -28,12 +28,14 @@ getDB().then(async (resp) => {
     let finalFormattedOUtput = ""
     for (const item of longCodesInfo) {
         finalFormattedOUtput += `<h4> ${item.name} (${item.code}) </h4>`;
-        const [FFO, completed = 0, expired = 0, failed = 0] = await getLongCodeDataSummary(ashieldmobtxnCollection, item.code, startDate, endDate);
-        finalFormattedOUtput += FFO;
+        const [data, completed = 0, expired = 0, failed = 0] = await getLongCodeDataSummary(ashieldmobtxnCollection, item.code, startDate, endDate);
+        finalFormattedOUtput += data;
         const totalRequests: number = completed + failed + expired;
         finalFormattedOUtput += "Total requests = " + totalRequests + "<br>";
-        finalFormattedOUtput += "Expired rate in % = " + ((expired / totalRequests) * 100).toFixed(2) + "<br>";
-        finalFormattedOUtput += "Failed rate in % = " + ((failed / totalRequests) * 100).toFixed(2) + "<br>";
+        const PercentageOfExpiredRate = expired === 0 ? 0 : ((expired / totalRequests) * 100).toFixed(2)
+        const PercentageOfFailedRate = failed === 0 ? 0 : ((failed / totalRequests) * 100).toFixed(2)
+        finalFormattedOUtput += `Expired rate in % = ${PercentageOfExpiredRate} <br>`;
+        finalFormattedOUtput += `Failed rate in % = ${PercentageOfFailedRate}<br>`;
     };
     await client.close();
     console.log("Time taken to execute mongo queries:", (performance.now() - startTime).toFixed(2), "ms");
