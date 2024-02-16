@@ -1,0 +1,20 @@
+version: "3"
+services:
+  generate-reports:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    environment:
+      TZ: "IST"
+      NODE_ENV: "dev"
+      APP_IP: "0.0.0.0"
+      HOST_CLUSTER_NAME: "Bajaj MO-SMS"
+      SLACK_HOURLY_REPORT : 'https://hooks.slack.com/services/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'
+      SLACK_ALERT_URL : 'https://hooks.slack.com/services/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'
+      NODE_OPTIONS : "--max-old-space-size=4096"
+      MONGO_URL : "mongodb://ashieldUser:ASh1e19U_21@localhost:27017"
+      REMOTE_USER: "ubuntu"
+    network_mode: "host"
+    volumes:
+      - ./Logs:/app/Logs
+    command: [ "npm", "start"]
