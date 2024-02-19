@@ -34,7 +34,7 @@ Before running the script, set the below environment variables <br>
 ## 4. Usage
 
 ### run instruction
-This script takes 2 command line inputs. this application is designed to run and generate reports for every hour.
+This script optionally takes 2 command line inputs. this application is designed to run and generate reports for every hour's 5th minute.
 
 1. `from ISO Datetime`: the first command line input is the ISO datetime: start datetime
 2. `from ISO Datetime`: the second command line input is the ISO datetime: end datetime
@@ -44,4 +44,6 @@ This script takes 2 command line inputs. this application is designed to run and
 <ol>
     <li>Hoisted all constants to the `config file`.</li>
     <li>Added more insights like "totoal failed percent", "total expired percentage".</li>
+    <li>Added schedular to run this script every hour is 5'th minute.</li>
+    <li>Added docker files.</li>
 </ol>
