@@ -11,4 +11,3 @@ COPY config /app/config/
 RUN npm install\
         && npm install typescript -g
 RUN tsc
-RUN apt-get update

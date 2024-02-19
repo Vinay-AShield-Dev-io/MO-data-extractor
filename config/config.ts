@@ -35,6 +35,7 @@ const prodToEmails = [
 const SLACK_ALERT_URL = process.env.SLACK_ALERT_URL ? process.env.SLACK_ALERT_URL : 'https://hooks.slack.com/services/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'; // bajajFinAlert
 const SLACK_HOURLY_REPORT_URL = process.env.SLACK_HOURLY_REPORT_URL ? process.env.SLACK_HOURLY_REPORT_URL : 'https://hooks.slack.com/services/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'; // bajajHourlyReport
 const SLACK_TEST_URL = 'https://hooks.slack.com/services/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'
+
 const prodSlackReportBot = {
     SLACK_ALERT_URL,
     SLACK_HOURLY_REPORT_URL
