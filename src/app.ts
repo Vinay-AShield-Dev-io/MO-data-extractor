@@ -44,6 +44,7 @@ const execScript = async () => {
     console.log("Program execution completed:", (performance.now() - performaStartTime).toFixed(2), "ms");
 }
 
+
 function scheduleNextExecution() {
     const now = new Date();
     const minutes = now.getMinutes();
