@@ -5,7 +5,7 @@
   "main": "dist/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node dist/src/app.js"
+    "start": "node  ./dist/src/mongoDBScripts/SMSTimelapseData.js 2024-02-02T00:00:00.000Z 2024-02-03T00:00:00.000"
   },
   "keywords": [
     "scripts"

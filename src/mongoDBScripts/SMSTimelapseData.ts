@@ -6,7 +6,7 @@ let startDate: Date = new Date(new Date().getTime() - (5 * 60 * 60 * 1000));
 let endDate: Date = new Date(startDate.getTime() - (1 * 60 * 60 * 1000));
 let performaStartTime = performance.now();
 
-let outPutFileName = "outfile.csv";
+let outPutFileName = "out/outfile.txt";
 
 if (process.argv.length > 3) {
     startDate = new Date(process.argv[2]);
