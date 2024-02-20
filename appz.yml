@@ -19,9 +19,9 @@ deploy:
 properties:
     AZURE_CONNECTION_STRING:
           vault: AZURE_CONNECTION_STRING
-    DB_MONGO_1A: "mongo-5-0-0.mongo-5-0"
-    DB_MONGO_2B: "mongo-5-0-1.mongo-5-0"
-    DB_MONGO_3C: "mongo-5-0-2.mongo-5-0"
+    DB_MONGO_1A: "mongo-4-2-0.mongo-4-2"
+    DB_MONGO_2B: "mongo-4-2-1.mongo-4-2"
+    DB_MONGO_3C: "mongo-4-2-2.mongo-4-2"
     MONGOUSER: moextractuser
     MONGOPASSWORD: 
         vault: MONGOPASSWORD
