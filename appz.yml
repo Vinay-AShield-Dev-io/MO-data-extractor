@@ -16,6 +16,12 @@ deploy:
     port:
     - 8080
 
+volumes:
+  - claim: mo-data
+    mount: /app/out
+    name: data
+    size: 5Gi
+
 properties:
     AZURE_CONNECTION_STRING:
           vault: AZURE_CONNECTION_STRING
@@ -25,5 +31,6 @@ properties:
     MONGOUSER: moextractuser
     MONGOPASSWORD: 
         vault: MONGOPASSWORD
+    MONGODB_SERVICE: 27017
     NODE_ENV: "dev"
     revision: 05
