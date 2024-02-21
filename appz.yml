@@ -21,6 +21,7 @@ volumes:
     mount: /app/out
     name: data
     size: 5Gi
+    matchLabels: false
 
 properties:
     AZURE_CONNECTION_STRING:
