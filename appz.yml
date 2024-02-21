@@ -12,6 +12,7 @@ build:
     
 deploy:
     context: bajaj/PROD3
+    type: statefulset
     replicas: 1
     port:
     - 8080
