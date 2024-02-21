@@ -35,4 +35,4 @@ properties:
         vault: MONGOPASSWORD
     MONGODB_SERVICE: 27017
     NODE_ENV: "dev"
-    revision: 05
+    revision: 06
