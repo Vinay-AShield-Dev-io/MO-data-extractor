@@ -35,4 +35,10 @@ properties:
         vault: MONGOPASSWORD
     MONGODB_SERVICE: 27017
     NODE_ENV: "dev"
+
+    BLOB_ACCOUNT_NAME: ashieldbajajmo
+    BLOB_ACCOUNT_KEY: 
+        vault: BLOB_ACCOUNT_KEY
+    BLOB_CONTAINER_NAME: mo-data
+    BLOB_NAME: mo-data
     revision: 06
