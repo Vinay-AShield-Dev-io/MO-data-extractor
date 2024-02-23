@@ -1,5 +1,5 @@
 import { Db, MongoClient, } from 'mongodb';
-import { ENV_VALS } from '../config/config';
+import { ENV_VALS } from '../../config/config';
 const MONGO_URL = ENV_VALS.mongoURL;
 const dbName = ENV_VALS.mongoDB_DBName;
 

@@ -8,13 +8,12 @@ services:
       TZ: "IST"
       NODE_ENV: "dev"
       APP_IP: "0.0.0.0"
-      HOST_CLUSTER_NAME: "Bajaj MO-SMS"
-      SLACK_HOURLY_REPORT : 'https://hooks.slack.com/services/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'
-      SLACK_ALERT_URL : 'https://hooks.slack.com/services/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'
-      NODE_OPTIONS : "--max-old-space-size=4096"
-      MONGO_URL : "mongodb://ashieldUser:ASh1e19U_21@172.31.0.1:27017/"
-      REMOTE_USER: "ubuntu"
-      AZURE_CONNECTION_STRING: "endpoint=https://ashield-email-service.communication.azure.com/;accesskey=fuDEqq4vqhjq0Ov8QV5NuLiNVPPB4xft/OQnVfY97fqhfjUPBMVn6k8kCJUSipxZQ4uQX5HJKEWgaAt1hZrQfA=="
+      NODE_OPTIONS: "--max-old-space-size=4096"
+      MONGO_URL: "mongodb://ashieldUser:ASh1e19U_21@172.31.0.1:27017/"
+      BLOB_ACCOUNT_NAME: ""
+      BLOB_ACCOUNT_KEY: ""
+      BLOB_CONTAINER_NAME: ""
+      BLOB_NAME: ""
     volumes:
       - ./out:/app/out
-    command: [ "npm", "start"]
+    command: [ "npm", "start" ]

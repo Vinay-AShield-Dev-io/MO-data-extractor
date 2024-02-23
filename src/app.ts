@@ -3,8 +3,8 @@ import { Db, MongoClient } from 'mongodb';
 import { performance } from 'perf_hooks';
 import { longCodesInfo } from '../config/config';
 import { sendMail } from './azureEmailService';
-import { getDB } from './connectDB';
 import { getLongCodeDataSummary } from './getLongCodeDataSummary';
+import { getDB } from './services/connectDB';
 
 let startDate: Date = new Date();
 let endDate: Date = new Date(startDate.getTime() - (1 * 60 * 60 * 1000));

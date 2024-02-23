@@ -14,10 +14,10 @@
   "license": "ISC",
   "dependencies": {
     "@azure/communication-email": "^1.0.0",
+    "@azure/storage-blob": "^12.17.0",
+    "@types/node": "^20.11.5",
     "mongodb": "^6.3.0",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.3.3",
-    "@types/node": "^20.11.5"
+    "ts-node": "^10.9.2"
   },
   "devDependencies": {
     "@types/node": "^20.11.5",
