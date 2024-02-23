@@ -12,9 +12,17 @@ build:
     
 deploy:
     context: bajaj/PROD3
+    type: statefulset
     replicas: 1
     port:
     - 8080
+
+volumes:
+  - claim: mo-data
+    mount: /app/out
+    name: data
+    size: 5Gi
+    matchLabels: false
 
 properties:
     AZURE_CONNECTION_STRING:
@@ -25,5 +33,6 @@ properties:
     MONGOUSER: moextractuser
     MONGOPASSWORD: 
         vault: MONGOPASSWORD
+    MONGODB_SERVICE: 27017
     NODE_ENV: "dev"
-    revision: 05
+    revision: 06
