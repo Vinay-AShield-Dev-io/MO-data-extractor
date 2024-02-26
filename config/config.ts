@@ -41,9 +41,8 @@ const supportedEnvs: IEnvHashType = {
         mongoDB_DBName: 'AShieldClickless'
     }
 }
-const setEnv = typeof (process.env.NODE_ENV) == "string" ? process.env.NODE_ENV.toLowerCase() : "";
-const ENV_VALS = typeof (supportedEnvs[setEnv]) == "object" ? supportedEnvs[setEnv] : supportedEnvs['dev'];
-
+const setEnv = typeof (process.env.NODE_ENV) === "string" ? process.env.NODE_ENV.toLowerCase() : "";
+const ENV_VALS = typeof (supportedEnvs[setEnv]) === "object" ? supportedEnvs[setEnv] : supportedEnvs['dev'];
 
 
 // Replace these values with your Azure Storage account details

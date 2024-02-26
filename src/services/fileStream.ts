@@ -1,4 +1,5 @@
 import * as fs from 'fs';
+import { logger } from './logger';
 
 export const writeDataIntofile = (filePath: string, callback: (arg0: null, arg1: fs.WriteStream) => fs.WriteStream) => {
 
@@ -11,11 +12,11 @@ export const writeDataIntofile = (filePath: string, callback: (arg0: null, arg1:
 
     // Ensure the data is flushed to the file and then call fsync
     writeStream.on('finish', () => {
-        console.log("Write operation finished");
+        logger.info("Write operation finished");
     });
 
     writeStream.on('error', (err) => {
-        console.error(`Error writing to file: ${err}`);
+        logger.error(`Error writing to file: ${err}`);
     });
 
 }

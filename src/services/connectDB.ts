@@ -1,11 +1,12 @@
 import { Db, MongoClient, } from 'mongodb';
 import { ENV_VALS } from '../../config/config';
+import { logger } from './logger';
 const MONGO_URL = ENV_VALS.mongoURL;
 const dbName = ENV_VALS.mongoDB_DBName;
 
 
 export const getDB = (): [Db, MongoClient] | null => {
-    console.log(MONGO_URL);
+    logger.debug(MONGO_URL);
     if (MONGO_URL === "") { console.error("MONGO_URL is not set"); return null };
     const client = new MongoClient(MONGO_URL);
     try {
@@ -13,7 +14,7 @@ export const getDB = (): [Db, MongoClient] | null => {
         const db = client.db(dbName);
         return [db, client]
     } catch (e) {
-        console.error(e);
+        logger.error("" + e);
         throw new Error("" + e);
     }
 }

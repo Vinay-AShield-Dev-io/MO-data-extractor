@@ -1,5 +1,6 @@
 import { BlobServiceClient, StorageSharedKeyCredential } from '@azure/storage-blob';
 import { BLOB_CREDENTIALS } from '../../config/config';
+import { logger } from './logger';
 
 export class BlobStorage {
     private accountName = "";
@@ -27,8 +28,7 @@ export class BlobStorage {
 
         // Upload a blob from a string
         blockBlobClient.upload(content, content.length).then((uploadBlobResponse) => {
-
-            console.log(`Blob "${this.blobName}" is uploaded with status code: ${uploadBlobResponse._response.status}`);
+            logger.info(`Blob "${this.blobName}" is uploaded with status code: ${uploadBlobResponse._response.status}`);
         })
 
     }

@@ -2,6 +2,7 @@ import { Db, MongoClient } from "mongodb";
 import { BlobStorage } from "../services/blobStorage";
 import { getDB } from "../services/connectDB";
 import { writeDataIntofile } from "../services/fileStream";
+import { logger } from "../services/logger";
 
 let startDate: Date = new Date(new Date().getTime() - (5 * 60 * 60 * 1000));
 let endDate: Date = new Date(startDate.getTime() - (1 * 60 * 60 * 1000));
@@ -64,17 +65,17 @@ const execScript = () => {
                 `
                 bs.upladBlob(blobContent);
                 if (err) {
-                    console.log(err);
+                    logger.error("" + err)
                 }
                 return ws;
             });
         }).finally(() => {
             client.close();
-            console.log("mongo execution completed:", (performance.now() - performaStartTime).toFixed(2), "ms");
+            logger.info("mongo execution completed:", (performance.now() - performaStartTime).toFixed(2), "ms");
         })
-        console.log("Time taken to execute mongo queries:", (performance.now() - performaStartTime).toFixed(2), "ms");
+        logger.info("Time taken to execute mongo queries:", (performance.now() - performaStartTime).toFixed(2), "ms");
     } catch (error) {
-        console.error(error);
+        logger.error("" + error)
         client.close();
     }
 }
