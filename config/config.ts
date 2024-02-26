@@ -28,19 +28,19 @@ const supportedEnvs: IEnvHashType = {
     port: 3001,
     currEnv: "dev",
     mongoURL: MONGO_URL,
-    mongoDB_DBName: "bajaj",
+    mongoDB_DBName: "AshieldClickless",
   },
   staging: {
     port: 3002,
     currEnv: "staging",
     mongoURL: MONGO_URL,
-    mongoDB_DBName: "bajaj",
+    mongoDB_DBName: "AshieldClickless",
   },
   prod: {
     port: 3003,
     currEnv: "prod",
     mongoURL: MONGO_URL,
-    mongoDB_DBName: "bajaj",
+    mongoDB_DBName: "AshieldClickless",
   },
 };
 const setEnv =
