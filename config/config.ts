@@ -48,10 +48,10 @@ const ENV_VALS = typeof (supportedEnvs[setEnv]) == "object" ? supportedEnvs[setE
 
 // Replace these values with your Azure Storage account details
 const BLOB_CREDENTIALS = {
-    accountName: typeof (process.env.BLOB_ACCOUNT_NAME) == "string" ? process.env.BLOB_ACCOUNT_NAME.toLowerCase() : "",
-    accountKey: typeof (process.env.BLOB_ACCOUNT_KEY) == "string" ? process.env.BLOB_ACCOUNT_KEY.toLowerCase() : "",
-    containerName: typeof (process.env.BLOB_CONTAINER_NAME) == "string" ? process.env.BLOB_CONTAINER_NAME.toLowerCase() : "",
-    blobName: typeof (process.env.BLOB_NAME) == "string" ? process.env.BLOB_NAME.toLowerCase() : "",
+    accountName: typeof (process.env.BLOB_ACCOUNT_NAME) == "string" ? process.env.BLOB_ACCOUNT_NAME : "",
+    accountKey: typeof (process.env.BLOB_ACCOUNT_KEY) == "string" ? process.env.BLOB_ACCOUNT_KEY : "",
+    containerName: typeof (process.env.BLOB_CONTAINER_NAME) == "string" ? process.env.BLOB_CONTAINER_NAME : "",
+    blobName: typeof (process.env.BLOB_NAME) == "string" ? process.env.BLOB_NAME : "",
 }
 
 

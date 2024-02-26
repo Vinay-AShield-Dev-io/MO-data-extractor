@@ -10,10 +10,10 @@ services:
       APP_IP: "0.0.0.0"
       NODE_OPTIONS: "--max-old-space-size=4096"
       MONGO_URL: "mongodb://ashieldUser:ASh1e19U_21@172.31.0.1:27017/"
-      BLOB_ACCOUNT_NAME: ""
-      BLOB_ACCOUNT_KEY: ""
-      BLOB_CONTAINER_NAME: ""
-      BLOB_NAME: ""
+      BLOB_ACCOUNT_NAME: "ashieldstorage"
+      BLOB_ACCOUNT_KEY: "sp=racwdl&st=2024-02-26T08:20:38Z&se=2024-03-09T16:20:38Z&sv=2022-11-02&sr=c&sig=NgJftUCrQ5txFWakkHz1H9O7b0sOLBgaKmvLcuUwWL0%3D"
+      BLOB_CONTAINER_NAME: "reports-data"
+      BLOB_NAME: "6jX862fjtffDY2ItE0929xSeYjnHK22.txt"
     volumes:
       - ./out:/app/out
     command: [ "npm", "start" ]
