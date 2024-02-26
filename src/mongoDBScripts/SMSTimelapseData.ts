@@ -57,9 +57,9 @@ const execScript = () => {
                 const bs = new BlobStorage();
                 const blobContent = `
                 Authentication completed below 1s: ${TimeDiffBelow1s}\n
-                Authentication completed below 4s: ${TimeDiffBelow1s}\n
-                Authentication completed below 6s: ${TimeDiffBelow1s}\n
-                Authentication completed below 10s: ${TimeDiffBelow1s}\n
+                Authentication completed below 4s: ${TimeDiffBelow4s}\n
+                Authentication completed below 6s: ${TimeDiffBelow6s}\n
+                Authentication completed below 10s: ${TimeDiffBelow10s}\n
                 Authentication completed after 10s: ${TimeDiffAfter10s}\n
                 `
                 bs.upladBlob(blobContent);

@@ -14,7 +14,6 @@ export class BlobStorage {
     }
     upladBlob = (content: string) => {
         // Create a StorageSharedKeyCredential object with your storage account and account key
-        console.log(this.accountKey)
         const sharedKeyCredential = new StorageSharedKeyCredential(this.accountName, this.accountKey);
 
         // Create a BlobServiceClient using the StorageSharedKeyCredential
