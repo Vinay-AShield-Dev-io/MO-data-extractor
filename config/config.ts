@@ -9,13 +9,14 @@ interface IEnvHashType {
   [key: string]: IEnv;
 }
 
-// ---------------------- azure emai service configurations --------------------------
+// ---------------------- azure email service configurations --------------------------
 // ---------------------- Slack configuration ends --------------------------
 
 const MONGO_URL =
   typeof process.env.MONGO_URL === "string"
     ? process.env.MONGO_URL
-    : "mongodb+srv://dawati66:Awatidb123@cluster0.9s6w0li.mongodb.net/college?retryWrites=true&w=majority";
+    : // : "mongodb+srv://dawati66:Awatidb123@cluster0.9s6w0li.mongodb.net/college?retryWrites=true&w=majority";
+      "mongodb+srv://dawati66:Awatidb123@cluster0.9s6w0li.mongodb.net/AshieldClickless";
 
 export const longCodesInfo = [
   { name: "Gupshup airtel", code: 1644033266 },
