@@ -61,6 +61,7 @@ This script optionally takes 2 command line inputs. this application is designed
     <li>Added the code to delete or update the data when from and to date is passed as an argument.</li>
     <li>Added the code for counting of mongoDB records and exporting them before deletion and after deletion.</li>
     <li>Added code to write logs in ./logs/applogs.log</li>
+    <li>Updated the code as per code review from Srinni sir.</li>
 </ol>
 
 ## 6. SYSTEM REQUIREMENTS:

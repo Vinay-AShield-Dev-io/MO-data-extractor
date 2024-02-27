@@ -17,8 +17,11 @@ const collectionName = "ashieldauthshare";
 const execAsync = promisify(exec);
 
 // Define the command to export data using mongoexport
-const beforeExportCommand = `mongoexport --uri="${mongoURI}" --collection="${collectionName}" --out="beforeDelete.json"`;
-const afterExportCommand = `mongoexport --uri="${mongoURI}" --collection="${collectionName}" --out="afterDelete.json"`;
+function exportCommand(fileName: string) {
+  return `mongoexport --uri="${mongoURI}" --collection="${collectionName}" --out="${fileName}.json"`;
+}
+// const beforeExportCommand = `mongoexport --uri="${mongoURI}" --collection="${collectionName}" --out="beforeDelete.json"`;
+// const afterExportCommand = `mongoexport --uri="${mongoURI}" --collection="${collectionName}" --out="afterDelete.json"`;
 
 if (process.argv.length > 3) {
   startDate = new Date(process.argv[2]);
@@ -27,55 +30,79 @@ if (process.argv.length > 3) {
   logger.info("Usage: node purgeOps.js fromDate toDate");
   exit(0);
 }
-const query = { updatedAt: { $gte: startDate, $lte: endDate }, authed: true };
+const deleteQuery = {
+  updatedAt: { $gte: startDate, $lte: endDate },
+  authed: true,
+};
 
-async function runMongoBackup() {
+async function beforeDeleteBackup() {
   try {
     // counting and taking backup data
     const [db, client] = getDB()!;
-    const col = db.collection("ashieldauthshare");
+    const col = db.collection(collectionName);
 
     await col.countDocuments().then((res) => {
       logger.info(`number of documents before delete operation: ${res}`);
     });
-    await execAsync(beforeExportCommand).finally(() => {
+    await execAsync(exportCommand("beforeDelete")).finally(() => {
       client.close();
     });
   } catch (error) {
-    logger.error("--------runMongoBackup Error--------------");
+    logger.error("--------beforeDeleteBackup Error--------------");
     logger.error(error);
   }
 }
-async function runMongoCleanup() {
+async function deleteMongoDB() {
   try {
     // counting and deleting data
     const [db, client] = getDB()!;
-    const col = db.collection("ashieldauthshare");
-
-    await col.deleteMany(query).then((results) => {
-      if (results.acknowledged) {
-        logger.info("Number of records deleted: " + results.deletedCount);
-      }
-    });
-
-    await execAsync(afterExportCommand);
+    const col = db.collection(collectionName);
 
     await col
-      .countDocuments()
-      .then((res) => {
-        logger.info("Mongo DB records backup and deletion completed.");
-        logger.info(`number of documents after delete operation: ${res}`);
+      .deleteMany(deleteQuery)
+      .then((results) => {
+        if (results.acknowledged) {
+          logger.info("Number of records deleted: " + results.deletedCount);
+        }
       })
+
+      // await execAsync(exportCommand("afterDelete"));
+
+      // await col
+      //   .countDocuments()
+      //   .then((res) => {
+      //     logger.info("Mongo DB records backup and deletion completed.");
+      //     logger.info(`number of documents after delete operation: ${res}`);
+      //   })
       .finally(() => {
         client.close();
-        return;
       });
   } catch (error) {
-    logger.error("--------runMongoCleanup Error--------------");
+    logger.error("--------deleteMongoDB Error--------------");
     logger.error(error);
   }
 }
+async function afterDeleteBackup() {
+  try {
+    // counting and taking backup data
+    const [db, client] = getDB()!;
+    const col = db.collection(collectionName);
 
-runMongoBackup().then(() => {
-  runMongoCleanup();
+    await col.countDocuments().then((res) => {
+      logger.info("Mongo DB records backup and deletion completed.");
+      logger.info(`number of documents after delete operation: ${res}`);
+    });
+    await execAsync(exportCommand("afterDelete")).finally(() => {
+      client.close();
+      return;
+    });
+  } catch (error) {
+    logger.error("--------afterDeleteBackup Error--------------");
+    logger.error(error);
+  }
+}
+beforeDeleteBackup().then(() => {
+  deleteMongoDB().then(() => {
+    afterDeleteBackup();
+  });
 });
