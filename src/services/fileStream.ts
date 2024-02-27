@@ -14,7 +14,6 @@ export const writeDataIntofile = (filePath: string, callback: (arg0: null, arg1:
     writeStream.on('finish', () => {
         logger.info("Write operation finished");
     });
-
     writeStream.on('error', (err) => {
         logger.error(`Error writing to file: ${err}`);
     });

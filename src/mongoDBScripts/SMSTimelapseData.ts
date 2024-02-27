@@ -63,6 +63,7 @@ const execScript = () => {
                 Authentication completed below 10s: ${TimeDiffBelow10s}\n
                 Authentication completed after 10s: ${TimeDiffAfter10s}\n
                 `
+                logger.info(blobContent);
                 bs.upladBlob(blobContent);
                 if (err) {
                     logger.error("" + err)
@@ -71,9 +72,9 @@ const execScript = () => {
             });
         }).finally(() => {
             client.close();
-            logger.info("mongo execution completed:", (performance.now() - performaStartTime).toFixed(2), "ms");
+            logger.info(`mongo execution completed: ${(performance.now() - performaStartTime).toFixed(2)} ms`);
         })
-        logger.info("Time taken to execute mongo queries:", (performance.now() - performaStartTime).toFixed(2), "ms");
+        logger.info(`Time taken to execute mongo queries: ${(performance.now() - performaStartTime).toFixed(2)}ms`);
     } catch (error) {
         logger.error("" + error)
         client.close();
