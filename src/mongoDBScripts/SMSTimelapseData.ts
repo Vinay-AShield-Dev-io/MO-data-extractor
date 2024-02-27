@@ -4,8 +4,8 @@ import { getDB } from "../services/connectDB";
 import { writeDataIntofile } from "../services/fileStream";
 import { logger } from "../services/logger";
 
-let startDate: Date = new Date(new Date().getTime() - (5 * 60 * 60 * 1000));
-let endDate: Date = new Date(startDate.getTime() - (1 * 60 * 60 * 1000));
+let startDate: Date = new Date("2024-02-02T00:00:00.000Z");
+let endDate: Date = new Date("2024-02-03T00:00:00.000");
 let performaStartTime = performance.now();
 
 let outPutFileName = "out/outfile.txt";
@@ -13,10 +13,6 @@ let outPutFileName = "out/outfile.txt";
 if (process.argv.length > 3) {
     startDate = new Date(process.argv[2]);
     endDate = new Date(process.argv[3]);
-}
-
-if (process.argv.length > 4) {
-    outPutFileName = process.argv[4];
 }
 
 
