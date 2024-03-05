@@ -8,7 +8,7 @@ let startDate: Date = new Date("2024-02-02T00:00:00.000Z");
 let endDate: Date = new Date("2024-02-03T00:00:00.000");
 let performaStartTime = performance.now();
 
-let outPutFileName = "out/outfile.txt";
+let outPutFileName = "/app/out/outfile.txt";
 
 if (process.argv.length > 3) {
     startDate = new Date(process.argv[2]);
@@ -18,7 +18,7 @@ if (process.argv.length > 3) {
 
 const execScript = () => {
     let client: MongoClient
-    let db: Db
+    let db: Db;
     const resp = getDB();
     if (resp === null) return;
     [db, client] = resp;
