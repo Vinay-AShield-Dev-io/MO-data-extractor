@@ -41,4 +41,4 @@ properties:
         vault: BLOB_ACCOUNT_KEY
     BLOB_CONTAINER_NAME: mo-data
     BLOB_NAME: mo-data
-    revision: 7
+    revision: 8
