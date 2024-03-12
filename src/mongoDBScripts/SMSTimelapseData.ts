@@ -25,7 +25,7 @@ const execScript = () => {
   [db, client] = resp;
 
   try {
-    const ashieldmobtxnCollection = db.collection("ashieldmobtxn");
+    const ashieldmobtxnCollection = db.collection("authregistry");
     ashieldmobtxnCollection
       .aggregate([
         {
