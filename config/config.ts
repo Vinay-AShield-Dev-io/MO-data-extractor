@@ -11,7 +11,7 @@ interface IEnvHashType {
 
 // ---------------------- Slack configuration ends --------------------------
 const MONGO_URL = typeof (process.env.MONGO_URL) === "string" ? process.env.MONGO_URL : "mongodb://ashieldUser:ASh1e19U_21@localhost:27017"
-
+const RESULT_OUTPUT_FILE = typeof (process.env.RESULT_OUTPUT_FILE) === "string" ? process.env.RESULT_OUTPUT_FILE : "/app/outfile.txt"
 
 
 export const longCodesInfo = [{ "name": "Gupshup airtel", "code": 1644033266 },
@@ -53,5 +53,5 @@ const BLOB_CREDENTIALS = {
     blobName: typeof (process.env.BLOB_NAME) == "string" ? process.env.BLOB_NAME : "6jX862fjtffDY2ItE0929xSeYjnHK22.txt",
 }
 
-export { BLOB_CREDENTIALS, ENV_VALS };
+export { BLOB_CREDENTIALS, ENV_VALS, RESULT_OUTPUT_FILE };
 

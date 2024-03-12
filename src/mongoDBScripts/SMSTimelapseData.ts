@@ -1,14 +1,14 @@
 import { Db, MongoClient } from "mongodb";
+import { RESULT_OUTPUT_FILE as outPutFileName } from "../../config/config";
 import { BlobStorage } from "../services/blobStorage";
 import { getDB } from "../services/connectDB";
 import { writeDataIntofile } from "../services/fileStream";
 import { logger } from "../services/logger";
 
+
 let startDate: Date = new Date("2024-02-02T00:00:00.000Z");
 let endDate: Date = new Date("2024-02-03T00:00:00.000");
 let performaStartTime = performance.now();
-
-let outPutFileName = "/app/out/outfile.txt";
 
 if (process.argv.length > 3) {
     startDate = new Date(process.argv[2]);
